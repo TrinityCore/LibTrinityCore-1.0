@@ -1,4 +1,4 @@
-local L = LibStub and LibStub:NewLibrary("LibTrinityCore-1.0",4)
+local L = LibStub and LibStub:NewLibrary("LibTrinityCore-1.0",6)
 if not L then return end
 
 local print, ipairs, assert, floor, tinsert =
@@ -28,11 +28,11 @@ local numCounterChars = #counterChars
 local function CommandCounterToString(counter)
   local char4,char3,char2,char1
   char4 = counter % numCounterChars
-  counter = floor(counter/char4)
+  counter = floor(counter/numCounterChars)
   char3 = counter % numCounterChars
-  counter = floor(counter/char3)
+  counter = floor(counter/numCounterChars)
   char2 = counter % numCounterChars
-  counter = floor(counter/char2)
+  counter = floor(counter/numCounterChars)
   char1 = counter % numCounterChars
   return ("%s%s%s%s"):format(counterChars[char1+1], counterChars[char2+1], counterChars[char3+1], counterChars[char4+1])
 end
