@@ -101,7 +101,7 @@ function L:IsTrinityCore() return isTrinity end
 -- passed func will be called with no arguments once a supported TrinityCore version is detected
 function L:RegisterLoader(func) if isTrinity == nil then tinsert(loaders,func) else func() end end
 -- Issue command to server. Callback will receive (success, array of lines) on command finish.
-function L:DoCommand(cmd, callback)
+function L:DoCommand(cmd, callback, humanReadable)
   if isTrinity == nil then
     self:RegisterLoader(function() L:DoCommand(cmd,callback,humanReadable) end) -- delay until detection finishes
     return
