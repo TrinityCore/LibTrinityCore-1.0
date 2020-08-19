@@ -6,7 +6,7 @@ It provides a Lua interface that allows addon code to interact with server comma
 ## Supported branches
 Branch | as of commit | Notes
 ------ | ------------ | -----
- `master` | `n/a` | Not yet supported
+ `master` | [`42c65c3`](https://github.com/TrinityCore/TrinityCore/commit/42c65c3bc22f97a96d9db481997d74e7103f8e64) | Supported serverside, lib needs updating with  C_ChatInfo.RegisterAddonMessagePrefix("TrinityCore") on init
  `3.3.5` | [`508c9d2`](https://github.com/TrinityCore/TrinityCore/commit/508c9d2fc1b20dc2cb40df533e823e1dfe2becc3) | 
 
 ## API
