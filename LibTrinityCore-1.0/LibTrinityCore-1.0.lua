@@ -42,6 +42,7 @@ frame:SetScript("OnEvent", function(self, event, prefix, message, channel, sende
   if event == "PLAYER_ENTERING_WORLD" then
     self:UnregisterEvent("PLAYER_ENTERING_WORLD")
     self:RegisterEvent("CHAT_MSG_ADDON")
+    C_ChatInfo.RegisterAddonMessagePrefix("TrinityCore")
     C_ChatInfo.SendAddonMessage("TrinityCore", "p0000", "WHISPER", (UnitName("player")))
     return
   end
