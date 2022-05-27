@@ -16,6 +16,7 @@ else
   log_debug_f = dummyfunc
 end
 
+local PlayerName = ''
 local isTrinity
 local expectedCommands = {}
 local recvBuffers = {}
