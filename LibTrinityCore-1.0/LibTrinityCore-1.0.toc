@@ -1,4 +1,4 @@
-## Interface: 30300
+## Interface: 90200
 ## Title: Lib: TrinityCore-1.0
 ## Notes: Integrates with TrinityCore to provide easy access to commands
 ## OptionalDeps: LibStub
