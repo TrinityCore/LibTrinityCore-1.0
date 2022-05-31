@@ -52,7 +52,7 @@ frame:SetScript("OnEvent", function(self, event, prefix, message, channel, sende
   end
   assert(event == "CHAT_MSG_ADDON")
   if prefix ~= "TrinityCore" then return end
-  if sender ~= playerFullname then return end
+  if not (sender == playerName or sender == playerFullname) then return end
   if isTrinity == nil then
     if message == "p0000" then
       isTrinity = false
