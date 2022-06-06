@@ -16,6 +16,10 @@ else
   log_debug_f = dummyfunc
 end
 
+local playerName, realmName = UnitNameUnmodified("player")
+realmName = GetRealmName()
+local playerFullname = playerName..'-'..realmName
+
 local isTrinity
 local expectedCommands = {}
 local recvBuffers = {}
@@ -42,12 +46,13 @@ frame:SetScript("OnEvent", function(self, event, prefix, message, channel, sende
   if event == "PLAYER_ENTERING_WORLD" then
     self:UnregisterEvent("PLAYER_ENTERING_WORLD")
     self:RegisterEvent("CHAT_MSG_ADDON")
-    SendAddonMessage("TrinityCore", "p0000", "WHISPER", (UnitName("player")))
+    C_ChatInfo.RegisterAddonMessagePrefix("TrinityCore")
+    C_ChatInfo.SendAddonMessage("TrinityCore", "p0000", "WHISPER", playerFullname)
     return
   end
   assert(event == "CHAT_MSG_ADDON")
   if prefix ~= "TrinityCore" then return end
-  if sender ~= UnitName("player") then return end
+  if not (sender == playerName or sender == playerFullname) then return end
   if isTrinity == nil then
     if message == "p0000" then
       isTrinity = false
@@ -112,6 +117,6 @@ function L:DoCommand(cmd, callback, humanReadable)
   end
   local counter = CommandCounterToString(commandCounter)
   expectedCommands[counter] = callback or dummyfunc
-  SendAddonMessage("TrinityCore", (humanReadable and "h%s%s" or "i%s%s"):format(counter,cmd), "WHISPER", (UnitName("player")))
+  C_ChatInfo.SendAddonMessage("TrinityCore", (humanReadable and "h%s%s" or "i%s%s"):format(counter,cmd), "WHISPER", playerFullname)
   commandCounter = commandCounter+1
 end
